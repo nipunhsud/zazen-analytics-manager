@@ -13,6 +13,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -115,5 +117,12 @@ public class AnalyticsManagerServiceConfiguration  extends WebMvcConfigurerAdapt
 		objectMapper.setSerializationInclusion(Include.NON_EMPTY);
 		objectMapper.setSerializationInclusion(Include.NON_NULL);
 		return objectMapper;
+	}
+	
+	@Bean
+	public MultipartResolver multipartResolver(){
+		CommonsMultipartResolver commonsMultipartResolver=new CommonsMultipartResolver();
+		commonsMultipartResolver.setMaxUploadSize(5000000l);
+		return commonsMultipartResolver;
 	}
 }

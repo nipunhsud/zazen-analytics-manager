@@ -28,4 +28,8 @@ public interface AnalyticsManagerDAO {
 	  @Result(property = "dateOfBirth", column = "dob")
 	 })
 	List<AnalyticsDataModel> getAnalyticsData();
+	
+	
+	
+	
 }
